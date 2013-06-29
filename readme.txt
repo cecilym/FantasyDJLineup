@@ -19,4 +19,5 @@ Running Goals:
 Today's changes:
 1. bigUps no longer increases fuckabilityFactor
 2. Began a gameplay prototype that mimics a game round
-3. Changed file names from dfl to ddl 
+3. Changed file names from dfl to fdl
+4. Created fillmein.js to store jokes, gear, names, etc. 

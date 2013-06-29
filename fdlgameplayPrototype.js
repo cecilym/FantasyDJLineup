@@ -5,10 +5,14 @@ function Dj(name, genre, fuckabilityFactor, doucheQuotient, streetCred){
 	// PRIVATE VARIABLES AND FUNCTIONS 
 	// ONLY PRIVELEGED METHODS MAY VIEW/EDIT/INVOKE 
 	// *********************************************************************** 
+	
+	// Setting the "age" of a DJ to determine how long they last in this mini game cycle
+	// A full version would have a set cycle length (festival season)
+	// Multiple players would compete to have the highest scoring DJ Lineup in that cycle
 	var alive=true, age=1;
 	var maxAge=50+Math.round(Math.random()*15)+Math.round(Math.random()*15);
 	function makeOlder(){
-		return alive = (++ age <= (maxAge - overKill));
+		return alive = (++ age <= (maxAge - overKill)); 
 	}
 
 	var myName= name;
@@ -18,9 +22,12 @@ function Dj(name, genre, fuckabilityFactor, doucheQuotient, streetCred){
 	// MAY BE INVOKED PUBLICLY AND MAY ACCESS PRIVATE ITEMS 
 	// MAY NOT BE CHANGED; MAY BE REPLACED WITH PUBLIC FLAVORS 
 	// ************************************************************************ 
-	this.toString=this.getName=function(){ return myName } 
+	this.toString = this.getName = function() { 
+		return myName; 
+	} 
 
-	this.raiseFf=function(){ 
+	// Function to call when an event raises a DJ's Fuckability Factor
+	this.raiseFf = function() { 
 		if (makeOlder()){ 
 			this.ff += 2; 
 			this.dq += 1;
@@ -29,39 +36,43 @@ function Dj(name, genre, fuckabilityFactor, doucheQuotient, streetCred){
 		} else alert(myName+" got a real job and is no longer a DJ.");
 	} 
 
+	// Function to call when an event raises a DJ's Douche Quotient
 	this.raiseDq=function(){ 
 		if (makeOlder()){ 
 			this.dq += 2; 
 			this.sc -= 1;
 			this.overKill++;
 			return[ff, dq, sc];
-		} else alert(myName+" got a real job and is no longer a DJ.");
+		} else alert(myName+" is trimming for the rest of the season.");
 	}
 
+	// Function to call when an event raises a DJ's Street Cred
 	this.raiseSc=function(){ 
 		if (makeOlder()){
 			this.sc += 2; 
 			this.ff += 1;
 			this.overKill++; 
 			return[ff, dq, sc];
-		} else alert(myName+" got a real job and is no longer a DJ.");
+		} else alert(myName+" did too much space coke, is laying low for a while.");
 	}
 
+	// Function to call when an event lowers a DJ's Street Cred
 	this.lowerSc=function(){ 
 		if (makeOlder()){
 			this.sc -= 2; 
 			this.ff -= 1;
 			this.overKill++; 
 			return[ff, dq, sc];
-		} else alert(myName+" got a real job and is no longer a DJ.");
+		} else alert(myName+" is going to graduate school or something.");
 	}
 
+	// Good deeds lower a DJ's Douche Quotient
 	this.bigUps=function(){ 
 		if (makeOlder()){
 			this.dq -= 1;
 			this.overKill++; 
 			return[ff, dq, sc];
-		} else alert(myName+" got a real job and is no longer a DJ.");
+		} else alert(myName + " had a kid.");
 	} 
 
 	this.getFf = function(){ 
@@ -82,7 +93,7 @@ function Dj(name, genre, fuckabilityFactor, doucheQuotient, streetCred){
 	}
 
 	this.getGenre=function() { 
-		return genre 
+		return genre; 
 	} 
 
 
